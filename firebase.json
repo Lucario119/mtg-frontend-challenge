@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "/dist",
+    "public": "dist/magic-challenge",
     "ignore": [
       "firebase.json",
       "**/.*",
