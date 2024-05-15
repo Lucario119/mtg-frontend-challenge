@@ -41,12 +41,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Firebase configuration file
-firebase.json
-
-# Firebase hosting deployment directory
-dist/
-
 # Firebase functions deployment directory
 functions/node_modules/
 
