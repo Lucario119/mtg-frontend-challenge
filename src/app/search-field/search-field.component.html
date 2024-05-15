@@ -1,0 +1,38 @@
+<div style="display: flex; flex-direction: column; align-items: center;">
+ <h1>Criaturas de Magic The Gathering</h1>
+ <form [formGroup]="searchForm" (ngSubmit)="onHandleSearch()" id="search-field">
+  <input
+      class="term-input"
+      type="text"
+      (change)="onSetNameChange($event)"
+      placeholder="Nome de uma coleção..."
+    />
+
+   <fieldset>
+       <ng-select
+        #ngSelect
+        class="custom"
+        (change)="onSelectBlock($event)"
+        formControlName="blockSelector"
+        [searchable]="false"
+        [clearable]="false"
+        [(ngModel)]="selectedBlock"
+      >
+      <ng-option
+
+        *ngFor="let block of optionBlocks"
+        [value]="block?.toLowerCase()"
+        >{{ block }}</ng-option
+      >
+
+
+    </ng-select>
+    <p *ngIf="!searchForm.dirty" style="color: red;">Necessário selecionar um bloco para iniciar a busca</p>
+   </fieldset>
+  <button class="search-button" type="submit" [disabled]="!searchForm.valid || selectedBlock === 'Selecione um bloco'">
+    Buscar
+  </button>
+
+</form>
+
+</div>

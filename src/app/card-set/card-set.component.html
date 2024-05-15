@@ -1,0 +1,35 @@
+<div style="display: flex; flex-direction: column; align-items: center;">
+  <ng-container *ngIf="cardSetsResponse.length > 0">
+    <div class="container">
+     <strong>Coleções de cartas encontradas (clique em uma para abrir pacotes):</strong>
+      <div class="sets-wrapper" >
+         <div *ngFor="let set of cardSetsResponse" (click)="onCardSetSelected(set.code)" class="set-container">
+            <h1>{{set.name}}</h1>
+            <span>{{set.block}}</span>
+            <p>{{toLocaleFormat(set.releaseDate)}}</p>
+         </div>
+     </div>
+    </div>
+
+   </ng-container>
+   <ng-container *ngIf="searchedCardsResponse.length > 0">
+     <div style="height: 1px;width: 100%; background-color: black; margin: 2rem 0;"></div>
+     <div class="container">
+       <strong>Cartas tiradas dos pacotes:</strong>
+       <div class="cards-wrapper">
+         <div *ngFor="let card of searchedCardsResponse" class="card-container">
+           <div  style="display: flex; gap: 5px;" [innerHTML]="substituteColor(card)"></div>
+           <div style="display: flex; align-items: center; gap: 0.5rem;">
+             <img src={{card.imageUrl}} alt={{card.name}}>
+             <div class="card-details">
+               <h1>{{card.name}}</h1>
+               <span>{{card.manaCost}}</span>
+               <span>{{card.text}}</span>
+             </div>
+           </div>
+        </div>
+       </div>
+     </div>
+   </ng-container>
+
+</div>
